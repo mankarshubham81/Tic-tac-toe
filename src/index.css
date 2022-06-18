@@ -1,0 +1,42 @@
+.bod {
+  background-color: rgb(23, 37, 76);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-gap: 15px;
+}
+
+.clr{
+  color: rgb(222, 218, 218);
+}
+
+
+.box {
+  width: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clr2{
+  background-color: rgb(71, 150, 151);
+}
+
+.clr3{
+  background-color: rgb(186, 200, 200);
+
+}
+
+.ccc{
+  background-color: rgb(186, 200, 200);
+ color: rgb(56, 189, 58);
+}
+
+.icon {
+  font-size: 35px;
+  color: rgb(95, 183, 185);
+}
+
