@@ -14,11 +14,13 @@ const App = () => {
   
   const [isCross, setIsCross] = useState(false);
   const [winningMessage, setWinningMessage] = useState("");
+  const [drawMatch, setDrawMatch] = useState(false);
 
   const reloadGame = () => {
     setIsCross(false);
     setWinningMessage("");
     itemArray.fill("empty", 0, 9);
+    setDrawMatch(false);
   };
 
   const checkIsWinner = () => {
@@ -53,12 +55,23 @@ const App = () => {
     else if(itemArray[2] === itemArray[4] &&
       itemArray[4] === itemArray[6] && itemArray[2] !== "empty") {
         return setWinningMessage(`${itemArray[2]} Wins !!!`);
+    } else if(itemArray[0] !== "empty" && itemArray[1] !== "empty" &&
+    itemArray[2] !== "empty" && itemArray[3] !== "empty" &&
+    itemArray[4] !== "empty" && itemArray[5] !== "empty" &&
+    itemArray[6] !== "empty" && itemArray[7] !== "empty" &&
+    itemArray[8] !== "empty"
+    ) {
+      setDrawMatch(true);
+      return setWinningMessage("Match draw");
     }
   };
 
   const changeItem = itemNumber => {
     if (winningMessage) {
-      return toast(winningMessage, {type : "success"})
+      if(winningMessage && drawMatch){
+        return toast(winningMessage, {type: "warning"});
+      }
+      return toast(winningMessage, {type : "success"});
     }
 
     if(itemArray[itemNumber] === "empty") {
@@ -79,9 +92,14 @@ const App = () => {
         <Col md={6} className="offset-md-3 clr">
           {winningMessage ? (
           <div className='mb-2 mt-2 clr'>
+            {drawMatch ?
+              (<h2 className=" rounded clr4 text-uppercase text-center">
+              {winningMessage}
+                </h2>) :
             <h2 className=" rounded ccc text-uppercase text-center">
               {winningMessage}
             </h2>
+            }
             <Button
             color='success'
             block

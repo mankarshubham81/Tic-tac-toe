@@ -21,6 +21,11 @@
   align-items: center;
 }
 
+.clr4{
+  background-color: rgb(206, 144, 97);
+  color: brown;
+}
+
 .clr2{
   background-color: rgb(71, 150, 151);
 }
